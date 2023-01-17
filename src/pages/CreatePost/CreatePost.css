@@ -1,0 +1,15 @@
+.create-post__container {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.create {
+  margin: 1rem;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+.inputs > div {
+  margin: 1rem;
+}

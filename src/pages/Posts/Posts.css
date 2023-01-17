@@ -1,0 +1,26 @@
+.App {
+  margin: 1rem;
+}
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 1rem;
+}
+
+.post__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.post__title {
+  font-weight: 900;
+}
+.post__edited-date,
+.post__created-date {
+  color: rgb(208, 208, 208);
+}
+
+.post__buttons {
+  display: flex;
+  justify-content: space-around;
+}
