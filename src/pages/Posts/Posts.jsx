@@ -7,7 +7,7 @@ import {
   CircularProgress,
   Typography,
   CardContent,
-  ButtonGroup,
+  Box,
   CardActions,
 } from "@mui/material";
 import format from "date-fns/format";
@@ -31,8 +31,8 @@ function Posts(props) {
 
   return (
     <div className="App">
-      <main className="blog-input">
-        <Typography variant="h2" component="h1">
+      <Box component="main">
+        <Typography sx={{ margin: "1.5rem" }} variant="h2" component="h1">
           All posts
         </Typography>
         <div className="card-container">
@@ -73,22 +73,19 @@ function Posts(props) {
                         View Post
                       </Button>
 
-                      <Button size="large" color="success">
+                      <Button
+                        size="large"
+                        color="success"
+                        id={`/${post._id}/update`}
+                        href={`/post/${post._id}/update`}
+                      >
                         Update
                       </Button>
                       <Button
                         size="large"
                         color="error"
-                        onClick={() => {
-                          let question = prompt(
-                            "Are you sure you want to delete?"
-                          );
-                          if (question.toLowerCase().trim() === "yes") {
-                            alert("Deleted");
-                          } else {
-                            alert("not delted");
-                          }
-                        }}
+                        id={`/${post._id}/delete`}
+                        href={`/post/${post._id}/delete`}
                       >
                         Delete
                       </Button>
@@ -99,7 +96,7 @@ function Posts(props) {
             })
           )}
         </div>
-      </main>
+      </Box>
     </div>
   );
 }

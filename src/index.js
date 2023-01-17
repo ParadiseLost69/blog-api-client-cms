@@ -8,12 +8,17 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
+//redux imports
+import store from "./store/store";
+import { Provider } from "react-redux";
+
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 import Posts from "./pages/Posts/Posts";
 import CreatePost from "./pages/CreatePost/CreatePost";
 import Root from "./Root";
 import Post from "./pages/Post/Post";
+import { DeletePost } from "./pages/DeletePost/DeletePost";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +28,8 @@ const router = createBrowserRouter([
       { path: "", element: <Posts /> },
       { path: "create-post", element: <CreatePost /> },
       { path: "post/:postId", element: <Post /> },
+      { path: "/post/:postId/update" },
+      { path: "/post/:postId/delete", element: <DeletePost /> },
     ],
   },
 ]);
@@ -37,7 +44,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={darkTheme}>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>
 );

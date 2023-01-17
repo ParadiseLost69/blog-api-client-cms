@@ -17,12 +17,17 @@
 .profile-display {
   display: flex;
   margin: 1rem;
+  place-content: center;
+  text-align: center;
 }
 .profile__image {
   /* place-self: center; */
   display: none;
   justify-self: center;
   align-self: center;
+}
+.profile__name {
+  place-self: center;
 }
 
 .profile__welcome-message,

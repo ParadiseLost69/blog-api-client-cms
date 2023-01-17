@@ -10,9 +10,11 @@ import {
 import { PostAdd, Email, AccountBox } from "@mui/icons-material";
 
 export default function Root() {
+  const params = window.location.pathname.split("/");
   const [width, setWidth] = useState(window.innerWidth);
-  const [currentPage, setCurrentPage] = useState("home");
-  const [value, setValue] = useState(null);
+  const [currentPage, setCurrentPage] = useState(params[1]);
+
+  //Changing window not working with Bottom Nav, need the params to change the highlighted menu item.
 
   function windowSize() {
     setWidth(window.innerWidth);
@@ -37,17 +39,6 @@ export default function Root() {
             <h3 className="profile__number">You have 2 Posts</h3>
           </div>
           <div className="navbar">
-            <Link to="/create-post">
-              <Button
-                variant={currentPage === "create" ? "contained" : "text"}
-                startIcon={<PostAdd />}
-                onClick={() => {
-                  setCurrentPage("create");
-                }}
-              >
-                Create New Post
-              </Button>
-            </Link>
             <Link to="/">
               <Button
                 variant={currentPage === "home" ? "contained" : "text"}
@@ -59,6 +50,18 @@ export default function Root() {
                 View Posts
               </Button>
             </Link>
+            <Link to="/create-post">
+              <Button
+                variant={params[1] === "create-post" ? "contained" : "text"}
+                startIcon={<PostAdd />}
+                onClick={() => {
+                  setCurrentPage("create");
+                }}
+              >
+                Create New Post
+              </Button>
+            </Link>
+
             <Link to="/">
               <Button variant="text" startIcon={<AccountBox />}>
                 View Profile
@@ -70,21 +73,29 @@ export default function Root() {
       {width < 750 && (
         <div>
           <BottomNavigation
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
-            value={1}
+            // change highlighted menu item to correct parameter
+            value={params[1]}
             sx={{ backgroundColor: "#0B1929", borderTop: "1px solid #444E5B" }}
             className="bottom-nav"
             showLabels
           >
-            <BottomNavigationAction label="Home" icon={<Email />} href="/" />
+            <BottomNavigationAction
+              value=""
+              label="Home"
+              icon={<Email />}
+              href="/"
+            />
             <BottomNavigationAction
               label="Create"
+              value="create-post"
               icon={<PostAdd />}
               href="/create-post"
             />
-            <BottomNavigationAction label="Profile" icon={<AccountBox />} />
+            <BottomNavigationAction
+              label="Profile"
+              value={"profile"}
+              icon={<AccountBox />}
+            />
           </BottomNavigation>
         </div>
       )}
