@@ -41,15 +41,16 @@ const darkTheme = createTheme({
     mode: "dark",
     secondary: { main: orange[300], light: orange.A200 },
     success: { main: green[500] },
+    background: { default: "#0B1929" },
   },
 });
 
-const lightTheme = createTheme({
-  palette: {
-    mode: "light",
-    background: { default: red[200] },
-  },
-});
+// const lightTheme = createTheme({
+//   palette: {
+//     mode: "light",
+//     background: { default: red[200] },
+//   },
+// });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
