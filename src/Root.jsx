@@ -5,14 +5,22 @@ import {
   BottomNavigation,
   BottomNavigationAction,
   Box,
-  Button,
   Divider,
   Skeleton,
+  Stack,
+  Grid,
+  Typography,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
   Paper,
 } from "@mui/material";
-import { PostAdd, Email, AccountBox } from "@mui/icons-material";
+import { PostAdd, Email, AccountBox, Home } from "@mui/icons-material";
 
 export default function Root() {
+  //get params for changing button values in selected menu items
   const params = window.location.pathname.split("/");
   const [width, setWidth] = useState(window.innerWidth);
   const [currentPage, setCurrentPage] = useState(params[1]);
@@ -26,90 +34,127 @@ export default function Root() {
   window.addEventListener("resize", windowSize);
 
   return (
-    <Box>
-      {width >= 750 && (
-        <aside className="navigation-sidebar">
-          <div className="profile-display">
-            <Skeleton
-              variant="circular"
-              height={60}
-              width={60}
-              className="profile__image"
-            />
-
-            <h2 className="profile__name">Hello Mai!</h2>
-            <h3 className="profile__welcome-message">Welcome to your blog</h3>
-            <h3 className="profile__number">You have 2 Posts</h3>
-          </div>
-          <div className="navbar">
-            <Link to="/">
-              <Button
-                variant={currentPage === "home" ? "contained" : "text"}
-                startIcon={<Email />}
-                onClick={() => {
-                  setCurrentPage("home");
-                }}
-              >
-                View Posts
-              </Button>
-            </Link>
-            <Link to="/create-post">
-              <Button
-                variant={params[1] === "create-post" ? "contained" : "text"}
-                startIcon={<PostAdd />}
-                onClick={() => {
-                  setCurrentPage("create");
-                }}
-              >
-                Create New Post
-              </Button>
-            </Link>
-
-            <Link to="/">
-              <Button variant="text" startIcon={<AccountBox />}>
-                View Profile
-              </Button>
-            </Link>
-          </div>
-          <Divider />
-        </aside>
-      )}
-      {width < 750 && (
-        <div>
-          <BottomNavigation
-            // change highlighted menu item to correct parameter
-            value={params[1]}
-            sx={{
-              backgroundColor: "#0B1929",
-              borderTop: "1px solid #444E5B",
-            }}
-            className="bottom-nav"
-            showLabels
+    <Grid container>
+      {width >= 600 && (
+        <Grid item xs={0} sm={5} md={3} lg={3} xl={2}>
+          <Stack
+            position="sticky"
+            top={0}
+            direction="row"
+            sx={{}}
+            component="aside"
+            className="navigation-sidebar"
           >
-            <BottomNavigationAction
-              value=""
-              label="Home"
-              icon={<Email />}
-              href="/"
-            />
-            <BottomNavigationAction
-              label="Create"
-              value="create-post"
-              icon={<PostAdd />}
-              href="/create-post"
-            />
-            <BottomNavigationAction
-              label="Profile"
-              value={"profile"}
-              icon={<AccountBox />}
-            />
-          </BottomNavigation>
-        </div>
-      )}
+            <Paper sx={{ p: 2, backgroundColor: "background.default" }}>
+              <Stack
+                sx={{
+                  display: "flex",
+                  marginRight: 0,
+                }}
+              >
+                <Stack
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <Skeleton
+                    variant="circular"
+                    height={60}
+                    width={60}
+                    className="profile__image"
+                  />
 
-      <div>
-        <Outlet />
-      </div>
-    </Box>
+                  <Typography variant="h4">Hello Mai!</Typography>
+                </Stack>
+              </Stack>
+
+              <Stack
+                direction="row"
+                justifyContent="space-evenly"
+                alignItems="center"
+              >
+                <List
+                  component="navigation"
+                  sx={{ my: 2, p: 4, height: "100vh" }}
+                >
+                  <ListItem disablePadding>
+                    <ListItemButton selected={currentPage === ""} href="/">
+                      <ListItemIcon>
+                        <Home />
+                      </ListItemIcon>
+                      <ListItemText sx={{ justifyContent: "center" }}>
+                        Home
+                      </ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+
+                  <ListItem sx={{ width: "100%" }} disablePadding>
+                    <ListItemButton
+                      selected={currentPage === "create-post"}
+                      href="/create-post"
+                    >
+                      <ListItemIcon>
+                        <PostAdd />
+                      </ListItemIcon>
+                      <ListItemText>New Post</ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+
+                  <ListItem disablePadding>
+                    <ListItemButton href="/">
+                      <ListItemIcon>
+                        <AccountBox />
+                      </ListItemIcon>
+                      <ListItemText>Profile</ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+                </List>
+              </Stack>
+
+              <Divider />
+            </Paper>
+          </Stack>
+        </Grid>
+      )}
+      {width < 600 && (
+        <BottomNavigation
+          // change highlighted menu item to correct parameter
+          value={params[1]}
+          sx={{
+            backgroundColor: "#0B1929",
+            borderTop: "1px solid #444E5B",
+            width: "100%",
+            position: "fixed",
+            bottom: 0,
+            zIndex: 2,
+          }}
+          className="bottom-nav"
+          showLabels
+        >
+          <BottomNavigationAction
+            value=""
+            label="Home"
+            icon={<Email />}
+            href="/"
+          />
+          <BottomNavigationAction
+            label="Create"
+            value="create-post"
+            icon={<PostAdd />}
+            href="/create-post"
+          />
+          <BottomNavigationAction
+            label="Profile"
+            value={"profile"}
+            icon={<AccountBox />}
+          />
+        </BottomNavigation>
+      )}
+      <Grid item xs={12} sm={7} md={9} lg={9} xl={10}>
+        <Box>
+          <Outlet />
+        </Box>
+      </Grid>
+    </Grid>
   );
 }

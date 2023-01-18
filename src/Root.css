@@ -13,7 +13,7 @@
   background-color: #0b1929;
   color: rgb(232, 232, 232);
 }
-
+/* 
 .profile-display {
   display: flex;
   margin: 1rem;
@@ -21,7 +21,6 @@
   text-align: center;
 }
 .profile__image {
-  /* place-self: center; */
   display: none;
   justify-self: center;
   align-self: center;
@@ -48,11 +47,11 @@
   position: fixed;
   bottom: 0;
   left: 0;
-}
+} */
 
 @media (min-width: 1000px) {
   .layout {
-    display: grid;
+    display: grid !important;
     grid-template-columns: 1fr 4fr;
   }
   .navigation-sidebar {
@@ -61,7 +60,7 @@
     display: block;
     left: 0;
   }
-  .profile-display {
+  /* .profile-display {
     padding: 1rem;
     border-bottom: 1px solid rgba(128, 128, 128, 0.13);
     display: grid;
@@ -76,7 +75,7 @@
   .navbar {
     flex-direction: column;
     justify-content: none;
-  }
+  } */
 }
 @media (min-width: 750px) {
   .navigation-sidebar {
