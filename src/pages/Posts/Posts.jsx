@@ -9,6 +9,7 @@ import {
   CardContent,
   Box,
   CardActions,
+  Paper,
 } from "@mui/material";
 import format from "date-fns/format";
 
@@ -47,6 +48,7 @@ function Posts(props) {
                   className="post__card"
                   key={post._id}
                   style={{ margin: "2rem", padding: "1rem" }}
+                  sx={{ margin: "2rem" }}
                 >
                   <CardContent>
                     <Typography
@@ -75,7 +77,7 @@ function Posts(props) {
 
                       <Button
                         size="large"
-                        color="success"
+                        color="secondary"
                         id={`/${post._id}/update`}
                         href={`/post/${post._id}/update`}
                       >

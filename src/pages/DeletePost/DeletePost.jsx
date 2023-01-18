@@ -12,8 +12,8 @@ import {
 
 export const DeletePost = () => {
   return (
-    <Box>
-      <Card>
+    <Box sx={{ backgroundColor: "secondary.dark" }}>
+      <Card sx={{ height: "100px", width: "100px" }}>
         <CardContent>
           <Typography component="h1" variant="h2">
             Are you sure you want to delete this item?

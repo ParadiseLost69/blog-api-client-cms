@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import "./Root.css";
+// import "./Root.css";
 import {
   BottomNavigation,
   BottomNavigationAction,
+  Box,
   Button,
+  Divider,
   Skeleton,
+  Paper,
 } from "@mui/material";
 import { PostAdd, Email, AccountBox } from "@mui/icons-material";
 
@@ -23,7 +26,7 @@ export default function Root() {
   window.addEventListener("resize", windowSize);
 
   return (
-    <div className="layout">
+    <Box>
       {width >= 750 && (
         <aside className="navigation-sidebar">
           <div className="profile-display">
@@ -68,6 +71,7 @@ export default function Root() {
               </Button>
             </Link>
           </div>
+          <Divider />
         </aside>
       )}
       {width < 750 && (
@@ -75,7 +79,10 @@ export default function Root() {
           <BottomNavigation
             // change highlighted menu item to correct parameter
             value={params[1]}
-            sx={{ backgroundColor: "#0B1929", borderTop: "1px solid #444E5B" }}
+            sx={{
+              backgroundColor: "#0B1929",
+              borderTop: "1px solid #444E5B",
+            }}
             className="bottom-nav"
             showLabels
           >
@@ -103,6 +110,6 @@ export default function Root() {
       <div>
         <Outlet />
       </div>
-    </div>
+    </Box>
   );
 }

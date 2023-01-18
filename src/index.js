@@ -13,12 +13,14 @@ import store from "./store/store";
 import { Provider } from "react-redux";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
 
 import Posts from "./pages/Posts/Posts";
 import CreatePost from "./pages/CreatePost/CreatePost";
 import Root from "./Root";
 import Post from "./pages/Post/Post";
 import { DeletePost } from "./pages/DeletePost/DeletePost";
+import { green, orange, red, teal } from "@mui/material/colors";
 
 const router = createBrowserRouter([
   {
@@ -37,17 +39,27 @@ const router = createBrowserRouter([
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
+    secondary: { main: orange[300], light: orange.A200 },
+    success: { main: green[500] },
+  },
+});
+
+const lightTheme = createTheme({
+  palette: {
+    mode: "light",
+    background: { default: red[200] },
   },
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={darkTheme}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
         <RouterProvider router={router} />
-      </Provider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );
 
