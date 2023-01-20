@@ -20,7 +20,7 @@ import CreatePost from "./pages/CreatePost/CreatePost";
 import Root from "./Root";
 import Post from "./pages/Post/Post";
 import { DeletePost } from "./pages/DeletePost/DeletePost";
-import { green, orange, red, teal } from "@mui/material/colors";
+import { green, orange } from "@mui/material/colors";
 
 const router = createBrowserRouter([
   {
