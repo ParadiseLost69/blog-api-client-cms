@@ -48,10 +48,7 @@ export default function CreatePost() {
   return (
     <div className="create-post__container">
       <main className="create">
-        <Link to="/">
-          <Button style={{ margin: "1rem" }}>Main page</Button>
-        </Link>
-        <h1>Create a Post</h1>
+        <h1 className="create-post__title">Create a Post</h1>
         <form className="inputs">
           <TextField
             onChange={handleTitleChange}

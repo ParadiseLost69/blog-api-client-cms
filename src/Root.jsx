@@ -45,7 +45,13 @@ export default function Root() {
             component="aside"
             className="navigation-sidebar"
           >
-            <Paper sx={{ p: 2, backgroundColor: "background.default" }}>
+            <Paper
+              sx={{
+                p: 2,
+                backgroundColor: "background.default",
+                borderRight: ".1rem solid grey",
+              }}
+            >
               <Stack
                 sx={{
                   display: "flex",
@@ -77,8 +83,12 @@ export default function Root() {
                   component="navigation"
                   sx={{ my: 2, p: 4, height: "100vh" }}
                 >
-                  <ListItem disablePadding>
-                    <ListItemButton selected={currentPage === ""} href="/">
+                  <ListItem sx={{ m: 1 }} disablePadding>
+                    <ListItemButton
+                      sx={{ borderRadius: "5px" }}
+                      selected={currentPage === ""}
+                      href="/"
+                    >
                       <ListItemIcon>
                         <Home />
                       </ListItemIcon>
@@ -88,8 +98,9 @@ export default function Root() {
                     </ListItemButton>
                   </ListItem>
 
-                  <ListItem sx={{ width: "100%" }} disablePadding>
+                  <ListItem sx={{ m: 1 }} disablePadding>
                     <ListItemButton
+                      sx={{ borderRadius: "5px" }}
                       selected={currentPage === "create-post"}
                       href="/create-post"
                     >
@@ -100,8 +111,8 @@ export default function Root() {
                     </ListItemButton>
                   </ListItem>
 
-                  <ListItem disablePadding>
-                    <ListItemButton href="/">
+                  <ListItem sx={{ m: 1 }} disablePadding>
+                    <ListItemButton sx={{ borderRadius: "5px" }} href="/">
                       <ListItemIcon>
                         <AccountBox />
                       </ListItemIcon>

@@ -13,3 +13,6 @@
 .inputs > div {
   margin: 1rem;
 }
+.create-post__title {
+  margin-left: 1rem;
+}
