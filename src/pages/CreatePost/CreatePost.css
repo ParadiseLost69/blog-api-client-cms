@@ -16,3 +16,28 @@
 .create-post__title {
   margin-left: 1rem;
 }
+
+.preview {
+  margin-inline: 2rem;
+}
+
+.preview h1 {
+  font-size: 2.5rem !important;
+}
+
+.preview h2 {
+  font-size: 2rem;
+}
+
+.preview h3 {
+  font-size: 1.5rem;
+}
+
+.preview li {
+  padding: 2rem;
+  list-style: circle !important;
+}
+
+.preview li ::marker {
+  color: red;
+}

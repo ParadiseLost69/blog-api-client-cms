@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
 import "./CreatePost.css";
 import { Converter } from "showdown";
@@ -82,7 +81,10 @@ export default function CreatePost() {
       </main>
       <aside className="preview">
         <h1>{title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: previewBody }}></div>
+        <div
+          className="preview__content"
+          dangerouslySetInnerHTML={{ __html: previewBody }}
+        ></div>
       </aside>
     </div>
   );
